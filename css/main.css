@@ -143,9 +143,12 @@ ul.progress-list.large {
     width: 10100px;
     color: #ffffff;
 
+    transition: left 0.2s ease-in-out;
+    -webkit-transition: left 0.2s ease-in-out;
+
 }
 ul.progress-list.large li{
-    width: 100px;
+    width: 80px;
     font-size: 50px;
 }
 
@@ -164,7 +167,7 @@ ul.progress-list.large li{
     left: 302px;
 }
 .counter-large{
-    width: 100px;
+    width: 80px;
     height: 70px;
     overflow: hidden;
     position: absolute;

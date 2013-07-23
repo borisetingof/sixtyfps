@@ -83,12 +83,23 @@
 
     var progress=0;
     var interval;
+    var percTotal=0;
+
+
     function progressUpdate(){
-        progress+=0.33;
+        progress+=1;
         counterInnerSmallLeft.style.left = -progress + 150 + 'px';
         counterInnerSmallRight.style.left = -progress - 100 + 'px';
-        //counterInnerLarge.style.left = -Math.round(progress/100) *100 + 'px';
-        counterInnerLarge.style.left = -progress + 'px';
+
+        if(percTotal != Math.round(progress/100)*100){
+            percTotal = Math.round(progress/100)*100;
+            counterInnerLarge.style.left = - Math.round(progress/100) *80 + 'px';
+        };
+
+
+        //counterInnerLarge.style.left = -progress + 'px';
+
+
         if(progress==100*100/step) clearInterval(interval);
     }
     interval = setInterval(progressUpdate, 1);
