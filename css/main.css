@@ -113,6 +113,92 @@ textarea {
     height: 600px;
 }
 
+.preloader-container{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+
+ul.progress-list{
+    font-family: 'Cuprum', Arial, serif;
+    -webkit-font-smoothing: antialiased;
+    list-style: none;
+    position: absolute;
+}
+ul.progress-list li{
+    float: left;
+}
+ul.progress-list.small {
+    width: 10100px;
+    color: #828282;
+    letter-spacing: 1px;
+
+}
+ul.progress-list.small li{
+    width: 100px;
+    font-size: 10px;
+}
+ul.progress-list.large {
+    width: 10100px;
+    color: #ffffff;
+
+}
+ul.progress-list.large li{
+    width: 100px;
+    font-size: 50px;
+}
+
+.counter-small-left, .counter-small-right{
+    height: 12px;
+    overflow: hidden;
+    position: absolute;
+    top: 39px;
+}
+.counter-small-left{
+    width: 120px;
+    left: 75px;
+}
+.counter-small-right{
+    width: 420px;
+    left: 302px;
+}
+.counter-large{
+    width: 100px;
+    height: 70px;
+    overflow: hidden;
+    position: absolute;
+    left: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 p.preloader{
     font-size: 14px;
     display: none;

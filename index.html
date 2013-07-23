@@ -9,7 +9,7 @@
     <meta property="og:image" content="http://www.sixtyfps.com.au/img/facebookLikeImg.png"/>
     <meta property="og:site_name" content="Sixty FPS"/>
     <meta property="fb:admins" content="566535958"/>
-    <title>Boris Etingof — Developer</title>
+    <!--<title>Boris Etingof — Developer</title>-->
     <meta name="description" content="Portfolio.HTML5">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/normalize.css">
@@ -17,6 +17,7 @@
 </head>
 <body>
 
+<!--
 <div class="preloader" id="preloader">
     <div class="status-container">
         <p class="status" id="status"></p>
@@ -29,7 +30,13 @@
 
     <p class="percentage" id="percentage">65</p>
 </div>
+-->
+<div class="preloader-container" id="preloaderContainer">
+    <div id="counterSmallLeft" class="counter-small-left"></div>
 
+    <div id="counterSmallRight" class="counter-small-right"></div>
+    <div id="counterLarge" class="counter-large"></div>
+</div>
 
 <!--<p id="preloader" class="preloader">0%</p>-->
 
@@ -45,8 +52,47 @@
         Detector.addGetWebGLMessage();
     }
     else {
-        loadTheBadBoy();
+        //loadTheBadBoy();
     }
+    var step = 5;
+    var counterSmallLeft = document.getElementById('counterSmallLeft');
+    counterSmallLeft.innerHTML = create100ElList('small', 'counterInnerSmallLeft');
+
+    var counterSmallRight = document.getElementById('counterSmallRight');
+    counterSmallRight.innerHTML = create100ElList('small', 'counterInnerSmallRight');
+
+    var counterLarge = document.getElementById('counterLarge');
+    counterLarge.innerHTML = create100ElList('large', 'counterInnerLarge');
+
+    var counterInnerSmallLeft = document.getElementById('counterInnerSmallLeft');
+    var counterInnerSmallRight = document.getElementById('counterInnerSmallRight');
+    var counterInnerLarge = document.getElementById('counterInnerLarge');
+
+
+
+    function create100ElList(size, id){
+        var str='<ul id="' + id + '" class="progress-list ' + size + '">';
+        var num= '';
+        for(var i=0; i<101; i+=step){
+            num = (i<10) ? '0' + i : i;
+            str += '<li>' + num + '</li>';
+        }
+        str+='</ul>';
+        return str;
+    }
+
+    var progress=0;
+    var interval;
+    function progressUpdate(){
+        progress+=0.33;
+        counterInnerSmallLeft.style.left = -progress + 150 + 'px';
+        counterInnerSmallRight.style.left = -progress - 100 + 'px';
+        //counterInnerLarge.style.left = -Math.round(progress/100) *100 + 'px';
+        counterInnerLarge.style.left = -progress + 'px';
+        if(progress==100*100/step) clearInterval(interval);
+    }
+    interval = setInterval(progressUpdate, 1);
+
     var preloader, sta, statusStr, currentFile, ok, okStr, queue;
     function loadTheBadBoy(){
         preloader = document.getElementById('preloader');
