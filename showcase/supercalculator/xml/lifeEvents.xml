@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lifeEvents>
+
+	<lifeEvent name="Have a Baby">
+		<img src="img/icon_life_event_baby.png" />
+		<description>Take 2 years off work to raise a child.</description>
+		<type>absolute</type>
+		<salary>0</salary>
+		<selfEmploymentContributions></selfEmploymentContributions>
+		<selfEmploymentPercentGrowth></selfEmploymentPercentGrowth>
+		<salarySacrifice></salarySacrifice>
+		<salarySacrificePercentGrowth></salarySacrificePercentGrowth>
+		<personalContribution>0</personalContribution>
+		<personalContributionPercentGrowth></personalContributionPercentGrowth>
+		<superBalance></superBalance>
+		<undoEventAfterDuration>true</undoEventAfterDuration>
+		<monthsOfDuration>24</monthsOfDuration>
+		<insights> 
+			<insight id="baby1" title="Insight with PDF" header="header 1" img="img/icon_insight_test.png" downloadURL="downloads/test_insight.pdf">If you have to take time out of work your employer will stop contributing to your super until you return. 
+Couples are able to split their taxable super contributions with their spouse subject to certain conditions.  While one spouse is at home caring for children, the working spouse may split their taxable contributions with the "stay-at-home" spouse.
+</insight>
+		</insights>
+	</lifeEvent>
+
+	<lifeEvent name="Unexpected Money">
+		<img src="img/icon_life_event_money.png" />
+		<description>You recieve an inheritence of $150,000.</description>
+		<type>relative</type>
+		<salary></salary>
+		<selfEmploymentContributions></selfEmploymentContributions>
+		<selfEmploymentPercentGrowth></selfEmploymentPercentGrowth>
+		<salarySacrifice></salarySacrifice>
+		<salarySacrificePercentGrowth></salarySacrificePercentGrowth>
+		<personalContribution></personalContribution>
+		<personalContributionPercentGrowth></personalContributionPercentGrowth>
+		<superBalance>150000</superBalance>
+		<undoEventAfterDuration>false</undoEventAfterDuration>
+		<monthsOfDuration>1</monthsOfDuration>
+		<insights>
+			<insight id="money1" title="title 0" header="header 0" img="img/icon_insight_test.png" downloadURL="downloads/test_insight.pdf" linkURL="http://www.google.com">It's important to spend some time planning what will happen to your money when you die.
+You can usually nominate beneficiaries for your superannuation fund, or your income stream. In this case your super assets may not form part of your estate. If you are uncertain, talk to your super fund or to your financial adviser.
+</insight>
+		</insights>
+	</lifeEvent>
+
+	<lifeEvent name="Take a holiday">
+		<img src="img/icon_life_event_career_break.png" />
+		<description>Take 6 months off to travel the world.</description>
+		<type>absolute</type>
+		<salary>0</salary>
+		<selfEmploymentContributions></selfEmploymentContributions>
+		<selfEmploymentPercentGrowth></selfEmploymentPercentGrowth>
+		<salarySacrifice>0</salarySacrifice>
+		<salarySacrificePercentGrowth></salarySacrificePercentGrowth>
+		<personalContribution>0</personalContribution>
+		<personalContributionPercentGrowth></personalContributionPercentGrowth>
+		<superBalance></superBalance>
+		<undoEventAfterDuration>true</undoEventAfterDuration>
+		<monthsOfDuration>6</monthsOfDuration>
+		<insights>
+			<insight id="holiday1" title="title 0" header="header 0" downloadURL="downloads/test_insight.pdf" img="img/icon_insight_test.png">If you're leaving Australia temporarily to work overseas, you don't want to be doubling up on super payments. Australia has bilateral agreements in place with some countries, so that you or your employer do not have to meet social security obligations in that country, as well as in Australia.</insight>
+		</insights>
+	</lifeEvent>
+	
+	<lifeEvent name="Work part time">
+		<img src="img/icon_life_event_part_time.png" />
+		<description>Spend 3 years employed part time.</description>
+		<type>relative</type>
+		<salary></salary>
+		<selfEmploymentContributions></selfEmploymentContributions>
+		<selfEmploymentPercentGrowth></selfEmploymentPercentGrowth>
+		<salarySacrifice></salarySacrifice>
+		<salarySacrificePercentGrowth>-0.3</salarySacrificePercentGrowth>
+		<personalContribution></personalContribution>
+		<personalContributionPercentGrowth></personalContributionPercentGrowth>
+		<superBalance></superBalance>
+		<undoEventAfterDuration>true</undoEventAfterDuration>
+		<monthsOfDuration>36</monthsOfDuration>
+		<insights>
+			<insight id="partTime1" title="title 0" header="header 0" downloadURL="downloads/test_insight.pdf" img="img/icon_insight_test.png">A new job is a great time to get a new budget in place. You should take some time to decide what your financial goals are and which ones are most important to you. 
+It could be paying off debt, saving for a deposit for a home or planning a holiday. Setting aside some of your money for saving or investing can help you achieve those goals.
+</insight>
+		</insights>
+	</lifeEvent>
+	
+	
+	<lifeEvent name="Injury or disability">
+		<img src="img/icon_life_event_injury.png" ></img>
+		<description>Spend 12 months recovering from an injury.</description>
+		<type>absolute</type>
+		<salary>0</salary>
+		<selfEmploymentContributions>0</selfEmploymentContributions>
+		<selfEmploymentPercentGrowth></selfEmploymentPercentGrowth>
+		<salarySacrifice>0</salarySacrifice>
+		<salarySacrificePercentGrowth></salarySacrificePercentGrowth>
+		<personalContribution>0</personalContribution>
+		<personalContributionPercentGrowth></personalContributionPercentGrowth>
+		<superBalance></superBalance>
+		<undoEventAfterDuration>true</undoEventAfterDuration>
+		<monthsOfDuration>12</monthsOfDuration>
+		<insights>
+			<insight id="injury1" title="title 0" header="header 0" downloadURL="downloads/test_insight.pdf" img="img/icon_insight_test.png">Having the right type of insurance cover means that you, your spouse and dependants will be looked after financially in the event that you become seriously ill. 
+Your financial adviser can help you determine the type and level of cover that's right for you.
+</insight>
+		</insights>
+	</lifeEvent>
+	
+	
+	<lifeEvent name="Redundancy">
+		<img src="img/icon_life_event_redundancy.png" />
+		<description>Times are tough. You spend 6 months looking for a new job.</description>
+		<type>absolute</type>
+		<salary>0</salary>
+		<selfEmploymentContributions>0</selfEmploymentContributions>
+		<selfEmploymentPercentGrowth></selfEmploymentPercentGrowth>
+		<salarySacrifice>0</salarySacrifice>
+		<salarySacrificePercentGrowth></salarySacrificePercentGrowth>
+		<personalContribution>0</personalContribution>
+		<personalContributionPercentGrowth></personalContributionPercentGrowth>
+		<superBalance></superBalance>
+		<undoEventAfterDuration>true</undoEventAfterDuration>
+		<monthsOfDuration>6</monthsOfDuration>
+		<insights>
+			<insight id="redundancy1" title="title 0" header="header 0" downloadURL="downloads/test_insight.pdf" img="img/icon_insight_test.png">Keeping track of where your money goes is the key to getting control of your finances. 
+A budget doesn't need to be more complicated than a list of all the money going in to your bank account and a list of where that money goes. It can also help to plan in a certain amount for unexpected expenses.
+</insight>
+		</insights>
+	</lifeEvent>
+
+</lifeEvents>

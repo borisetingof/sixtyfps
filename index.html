@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="Boris Etingof —"/>
+    <meta property="og:description" content="Portfolio.HTML5"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://www.sixtyfps.com.au"/>
+    <meta property="og:image" content="http://www.sixtyfps.com.au/img/facebookLikeImg.png"/>
+    <meta property="og:site_name" content="Sixty FPS"/>
+    <meta property="fb:admins" content="566535958"/>
+    <title>Boris Etingof — Developer</title>
+    <meta name="description" content="Portfolio.HTML5">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+    <div class="status-container">
+        <p class="status" id="status"></p>
+        <p class="ok" id="ok"></p>
+    </div>
+    <div class="bar-total" id="barTotal"></div>
+    <div class="bar-current" id="barCurrent"></div>
+    <p class="current-file" id="currentFile">current file</p>
+
+
+    <p class="percentage" id="percentage">65</p>
+</div>
+
+
+<!--<p id="preloader" class="preloader">0%</p>-->
+
+<div id="fb-root"></div>
+<div class="fblike">
+    <div class="fb-like" data-href="http://www.sixtyfps.com.au/" data-send="false" data-layout="button_count"
+         data-width="450" data-show-faces="false" data-colorscheme="dark"></div>
+</div>
+<script src="js/libs/three/Detector.js"></script>
+<script src="http://code.createjs.com/preloadjs-0.3.1.min.js"></script>
+<script>
+    if (!Detector.webgl) {
+        Detector.addGetWebGLMessage();
+    }
+    else {
+        loadTheBadBoy();
+    }
+    var preloader, sta, statusStr, currentFile, ok, okStr, queue;
+    function loadTheBadBoy(){
+        preloader = document.getElementById('preloader');
+        sta = document.getElementById('status');
+        currentFile = document.getElementById('currentFile');
+        ok = document.getElementById('ok');
+        statusStr = "";
+        okStr = "";
+
+        preloader.style.display = 'block';
+        window.onresize = resize;
+        resize(null);
+
+        queue = new createjs.LoadQueue();
+        //queue.onComplete = onComplete;
+        //queue.onProgress = onProgress;
+        queue.onFileLoad = onFileLoad;
+        queue.onFileProgress = onFileProgress;
+        queue.loadManifest([
+            {id: "raphael", src:"js/libs/raphael/raphael-min.js"},
+            {id: "CuprumRegular_400", src:"js/libs/fonts/CuprumRegular_400.font.js"},
+            {id: "three", src:"js/libs/three/three.min.js"},
+            {id: "ConvolutionShader", src:"js/libs/three/shaders/ConvolutionShader.js"},
+            {id: "CopyShader", src:"js/libs/three/shaders/CopyShader.js"},
+            {id: "VignetteShader", src:"js/libs/three/shaders/VignetteShader.js"},
+            {id: "EffectComposer", src:"js/libs/three/postprocessing/EffectComposer.js"},
+            {id: "MaskPass", src:"js/libs/three/postprocessing/MaskPass.js"},
+            {id: "RenderPass", src:"js/libs/three/postprocessing/RenderPass.js"},
+            {id: "ShaderPass", src:"js/libs/three/postprocessing/ShaderPass.js"},
+            {id: "BloomPass", src:"js/libs/three/postprocessing/BloomPass.js"},
+            {id:"ignore", src:"js/main.js"},
+            {id:"ignore", src:"js/app.js"},
+            {id:"ignore", src:"js/libs/jquery/jquery-min.js"},
+            {id:"ignore", src:"js/libs/underscore/underscore-min.js"},
+            {id:"ignore", src:"js/views/markerview.js"},
+            {id:"ignore", src:"js/views/threejsview.js"},
+            {id:"ignore", src:"js/views/navitemview.js"},
+            {id:"ignore", src:"js/libs/backbone/backbone-optamd3-min.js"},
+            {id:"ignore", src:"js/views/infoview.js"},
+            {id:"ignore", src:"js/models/linesmodel.js"},
+            {id:"ignore", src:"js/models/navitemmodel.js"},
+            {id:"ignore", src:"js/models/cameramodel.js"},
+            {id:"ignore", src:"js/models/markermodel.js"},
+            {id:"ignore", src:"js/models/infomodel.js"},
+            {id:"ignore", src:"js/collections/markerscollection.js"},
+            {id:"ignore", src:"js/collections/navitemscollection.js"},
+            {id:"ignore", src:"js/router.js"},
+            {id:"ignore", src:"js/libs/utils/Stats.js"},
+            {id:"ignore", src:"js/libs/gsap/TweenLite.min.js"},
+            {id:"ignore", src:"js/libs/gsap/plugins/BezierPlugin.min.js"},
+            {id:"ignore", src:"img/circle.png"},
+            {id:"ignore", src:"img/blur.jpg"},
+            {id:"ignore", src:"img/dottedbg.png"},
+            {id:"ignore", src:"img/chrome.gif"},
+            {id: "require", src:"js/libs/require/require.js"}
+        ]);
+
+        //console.log(queue)
+    }
+    function resize(event){
+        //var height = (window.innerHeight < 600) ? 600 : window.innerHeight;
+        //preloader.style.top =  Math.round((height - parseInt(preloader.scrollHeight))/2) + 'px';
+    }
+    function onFileProgress(event) {
+        var loadedPC =  Math.round(event.loaded * 100);
+        currentFile.innerHTML = event.item.src + loadedPC;
+    }
+
+    function onFileLoad(event) {
+        statusStr += event.item.src + '<br/>';
+        sta.innerHTML = statusStr;
+
+        //okStr += 'ok<br/>';
+        //ok.innerHTML = okStr;
+    }
+    function onComplete(event) {
+
+
+        var so = event.target._scriptOrder;
+        var results =  event.target._loadedResults;
+        var id;
+        results['require'].setAttribute("data-main", "js/main");
+        for(var i=0; i<so.length; i++){
+            id =  so[i]['id'];
+            if(id!='ignore'){
+                document.body.appendChild(results[id]);
+            }
+        }
+        window.onresize = null;
+        preloader.style.display = 'none';
+        queue.onComplete = null;
+        queue.onProgress = null;
+        queue.removeAll();
+        queue.close();
+        queue = null;
+    }
+    function onProgress(event) {
+        var loadedPC =  Math.round(event.loaded * 100);
+        preloader.innerHTML = loadedPC + "%";
+    }
+</script>
+
+<!--facebook like-->
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=559526337394939";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!--gAnal-->
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36989927-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</body>
+</html>

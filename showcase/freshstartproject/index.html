@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
+<head>
+<link rel="alternate" type="application/rss+xml" title="Sitemap" href="sitemap.xml"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Fresh Start Project</title>
+<script type="text/javascript" src="js/swfobject.js"></script>
+<script type="text/javascript" src="js/swfaddress.js"></script>
+<script type="text/javascript">
+
+	function login()
+	{
+        FB.login(function(response) {
+            if (response.authResponse) {
+                //response.session.uid, response.session.access_token
+                var uid = response.authResponse.userID;
+                var access_token = response.authResponse.accessToken;
+                loginSuccess({'session':{'uid':uid, 'access_token':access_token}});
+            } else {
+                loginCancelled();
+            }
+        }, {scope: 'publish_stream'});
+	}
+
+	function loginSuccess(response)
+	{
+		document.getElementById('flashcontent').loginSuccess(response);
+	}
+
+	function loginCancelled()
+	{
+		document.getElementById('flashcontent').loginCancelled();
+	}
+	
+	function getUserInfo()
+	{
+		FB.api('/me', function(response) {
+			if (response.error || !response) {
+				document.getElementById('flashcontent').userInfoFail(response);
+			} else {
+				document.getElementById('flashcontent').userInfoSuccess(response);
+			}
+		});
+	}
+	
+	function getFriends()
+	{
+		FB.api('/me/friends', function(response) {
+			if (response.error || !response) {
+				document.getElementById('flashcontent').friendsListFail(response);
+			} else {
+				document.getElementById('flashcontent').friendsListSuccess(response);
+			}
+		});
+	}
+
+	function stream_publish(message, uid, userName, bricksCollected, suffix)
+	{
+		var name = userName + ' added ' + bricksCollected + ' brick' + suffix + ' to The Fresh Start Project.';
+        FB.api('/me/feed', 'post', { 'name': name}, function(response) {
+            if (!response || response.error) {
+                document.getElementById('flashcontent').postFail(response);
+            } else {
+                document.getElementById('flashcontent').postSuccess(response);
+            }
+        });
+	}
+
+	function inviteFriends()
+	{
+		FB.ensureInit(function() {
+			
+			var title = "test";
+			var dialog = new FB.UI.FBMLPopupDialog(title,'');
+			var fbml = "<fb:fbml>  <fb:fbml>  <fb:request-form  action=\"http://amnesia.com.au/2minutetower/\"  method=\"POST\"  invite=\"true\"  type=\"2 Minute Tower\"  content=\"Play 2 Minute Tower! <fb:req-choice url='http://amnesia.com.au/2minutetower/' label='Check it out!' />\">  <fb:multi-friend-selector showborder=\"false\" max=\"12\" actiontext=\"Invite your friends to play 2 Minute Tower.\">  </fb:request-form>  </fb:fbml> </fb:fbml>";
+		        
+			dialog.setFBMLContent(fbml);
+			dialog.setContentWidth(775);
+			dialog.setContentHeight(675);
+		        
+			dialog.show();
+		});
+	}
+	
+	function positionLike(topOffset)
+	{
+		document.getElementById('like').style.top = topOffset + 'px';
+		document.getElementById('like').style.display = '';
+	}
+
+
+	var params = {
+		quality: "high",
+		scale: "noscale",
+		wmode: "window",
+		allowscriptaccess: "always",
+		swliveconnect		: 'true',
+		bgcolor: "#E6E6E6"
+	};
+	var flashvars = {
+		siteXML: "xml/site.xml",
+		baseUrl: "http://freshstart.rea.ci.amnesia.com.au" 
+	};
+	var attributes = {
+		id: "flashcontent",
+		name: "flashcontent"
+	};
+	swfobject.embedSWF("main.swf", "flashcontent", "100%", "100%", "9.0.124", "expressInstall.swf", flashvars, params, attributes);
+</script>
+<style type="text/css">
+	/*hide from ie on mac\*/
+	html {
+		height: 100%;
+		overflow: hidden
+	}
+	#flashcontent {
+		width: 100%;
+		height: 100%;
+	}
+	/* end hide */
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #E6E6E6;
+	}
+</style>
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>
+		window.fbAsyncInit = function() {
+
+			FB.init({
+				appId	: '403233746562',
+                status	: true,
+                cookie	: true,
+                fbml	: true,
+                oauth : true
+			});
+			
+			//FB.XFBML.parse();
+		};
+
+		(function() {
+			var e = document.createElement('script'); e.async = true;
+			e.src = document.location.protocol +
+			'//connect.facebook.net/en_US/all.js';
+			document.getElementById('fb-root').appendChild(e); 
+		}());
+	</script>
+		<iframe id="like" src="like.html" style="border:0; display : none; top:12000px; height:23px; left:10px; overflow:hidden; position:absolute; width:300px; z-index:99"></iframe>
+		<div id="flashcontent">
+			<div id="alternateContent">
+				<h1>Fresh Start Project</h1>
+				<h2>Index</h2>
+	            <ul id="sitenav">
+	                <li><a href="index.html">Index</a></li>
+	            </ul>
+				<div id="copy">
+					<p id="sample">Sample</p>
+				</div>
+			</div>
+			<div id="noflash">
+				<p><strong>You need to upgrade your Flash Player</strong></p>
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<rate option="Growth">
+		<low>0.0352913762400233</low>
+		<standard>0.0774</standard>
+		<high>0.119104548029438</high>
+	</rate>
+	<rate option="Moderate">
+		<low>0.0520758697786042</low>
+		<standard>0.08568</standard>
+		<high>0.119115704151322</high>
+	</rate>
+	<rate option="Conservative">
+		<low>0.0713675055196169</low>
+		<standard>0.0925</standard>
+		<high>0.113470593940331</high>
+	</rate>
+	<rate option="Super Cash">
+		<low>0.0814078744348613</low>
+		<standard>0.093</standard>
+		<high>0.104570420018017</high>
+	</rate>
+	<rate option="10">
+		<low>0.0445711012083247</low>
+		<standard>0.0829</standard>
+		<high>0.121011013239758</high>
+	</rate>
+	<rate option="20">
+		<low>0.0445711012083247</low>
+		<standard>0.0829</standard>
+		<high>0.121011013239758</high>
+	</rate>
+	<rate option="30">
+		<low>0.0445711012083247</low>
+		<standard>0.0829</standard>
+		<high>0.121011013239758</high>
+	</rate>
+	<rate option="40">
+		<low>0.0478267580331864</low>
+		<standard>0.08376</standard>
+		<high>0.119482947451819</high>
+	</rate>
+	<rate option="50">
+		<low>0.0545387839090676</low>
+		<standard>0.08565</standard>
+		<high>0.116570404041106</high>
+	</rate>
+	<rate option="60">
+		<low>0.0713675055196169</low>
+		<standard>0.0925</standard>
+		<high>0.113470593940331</high>
+	</rate>
+	<rate option="70">
+		<low>0.0713675055196169</low>
+		<standard>0.0925</standard>
+		<high>0.113470593940331</high>
+	</rate>
+	<rate option="80">
+		<low>0.0713675055196169</low>
+		<standard>0.0925</standard>
+		<high>0.113470593940331</high>
+	</rate>
+	<rate option="90">
+		<low>0.0713675055196169</low>
+		<standard>0.0925</standard>
+		<high>0.113470593940331</high>
+	</rate>
+</rates>

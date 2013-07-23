@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panels>
+	<panel type="age">
+		<title>Age</title>
+		<min>18</min>
+		<max>65</max>
+		<defaultValue>30</defaultValue>
+		<hint>Investing smarter whilst you are younger means more money to retire with.</hint>
+	</panel>
+	<panel type="sex">
+		<title>Gender</title>
+		<value label="M">Male</value>
+		<value label="F">Female</value>
+		<defaultValue>Female</defaultValue>
+		<hint>Your gender will have an effect on your life expectancy. Females generally live longer.</hint>
+		<!-- 
+		<insights>
+			<insight value = "Male"  title="title 0" header="header 0" img = "img/icon_insight_test.png">insight copy Male</insight>
+			<insight value = "Female"  title="title 1" header="header 1" img = "img/icon_insight_test.png">insight copy Female</insight>
+		</insights> -->
+	</panel> 
+	<panel type="income">
+		<title>Salary</title>
+		<min>28000</min>
+		<max>250000</max>
+		<step>1000</step>
+		<defaultValue>60000</defaultValue>
+		<hint>Your gross salary. That is, your income before tax.</hint>
+	</panel>	
+	<panel type="superBalance">
+		<title>Super Balance</title>
+		<min>0</min>
+		<max>100000</max>
+		<step>1000</step>
+		<defaultValue>5000</defaultValue>
+		<hint>About how much money do you have invested in super up to this point?</hint>
+	</panel>
+	<panel type="superAccounts">
+		<title>Super Accounts</title>
+		<min>0</min>
+		<max>3</max>
+		<defaultValue>1</defaultValue>
+		<hint>How many super accounts do you have?</hint>
+		<insights>
+			<!--<insight id="superAccountInsight1" value = "0"  title="title 0" header="header 0" img = "img/icon_insight_test.png">copy 0</insight>
+			<insight id="superAccountInsight2" value = "2"  title="title 1" header="header 1" img = "img/icon_insight_test.png">copy 1</insight>
+			<insight id="superAccountInsight3" value = "3"  title="title 2" header="header 2" img = "img/icon_insight_test.png">copy 2</insight>-->
+		</insights>
+	</panel>
+</panels>

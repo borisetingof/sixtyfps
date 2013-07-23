@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BlackBerry Road to Glory</title>
+<meta name="description" content="Test your rugby trivia and send the Wallabies to tournament victory. Only 90 seconds left, can you take home the trophy? Play now." /> 
+<meta property="og:title" content="Test your rugby trivia" />                                             
+<meta property="og:type" content="" />                                                 
+<meta property="og:image" content="http://blackberry-au.avalade.com/rugby-world-cup/road_to_glory/appicon.gif" />
+<meta property="og:url" content="http://www.blackberryrugbyworldcup.com/road_to_glory/" />
+<meta property="og:site_name" content="BlackBerry Road to Glory game" />
+<meta property="fb:app_id" content="" />
+<meta property="og:description" content="Test your rugby trivia and send the Wallabies to tournament victory. Only 90 seconds left, can you take home the trophy? Play now."/>
+<script type="text/javascript" src="swfobject.js"></script>
+<script type="text/javascript">
+	function connect()
+	{ 
+		FB.login(function(response) {
+		   if (response.authResponse) {
+		      loginSuccess(response.authResponse);
+		   } else {
+		      loginCancelled();
+		   }
+		 }, {scope: 'publish_stream'});
+	}
+	
+	function share()
+	{
+		var name 		= 'Test your rugby trivia'; 
+	    var description = 'Test your rugby trivia and send the Wallabies to tournament victory. Only 90 seconds left, can you take home the trophy? Play now.';
+        var icon 		= 'http://blackberry-au.avalade.com/rugby-world-cup/road_to_glory/appicon.gif'; 
+		var link 		= 'http://www.blackberryrugbyworldcup.com/road_to_glory/';
+		var actions 	= [{'name':'Play now!', 'link':'http://www.blackberryrugbyworldcup.com/road_to_glory/'}];
+		
+		FB.api('/me/feed', 'post', { 'name': name, 'description': description, 'icon': icon, 'link': link, 'actions': actions}, function(response) {
+		  if (!response || response.error) {
+		    shareFail();
+		  } else {
+		    shareSuccess();
+		  }
+		});
+	}
+	
+	function loginSuccess(response)
+	{
+		document.getElementById('flashcontent').connectionSuccess(response);
+	}
+	function loginCancelled()
+	{
+		document.getElementById('flashcontent').connectionFail();
+	}
+	function shareSuccess(response)
+	{
+		document.getElementById('flashcontent').shareSuccess();
+	}
+	function shareFail()
+	{
+		document.getElementById('flashcontent').shareFail();
+	}
+	
+	
+	
+	//Flash publishing begin
+	function cancelFunction() {
+	        alert("Express Install was cancelled");
+	}
+	
+	var playerVersion = swfobject.getFlashPlayerVersion();
+	
+	
+	if ((playerVersion.major == 10 && playerVersion.minor >= 2) || playerVersion.major > 10) {
+	        var fn = function() {
+	                var att = { data:"shell.swf", width:"100%", height:"100%" };
+	                var par = {	wmode:				'direct',
+								bgcolor:			'#000000',
+								scale:				'noborder',
+								salign:				'',
+								quality:			'best',
+								menu: 				'false',
+								allowscriptaccess:	'always',
+								swliveconnect:		'true'
+	                			};
+	                var id = "flashcontent";
+	                swfobject.createSWF(att, par, id);
+	        };
+	} else {
+	        var fn = function() {
+	                var att = {data:"expressInstall.swf", width:"300", height:"240"};
+	                var par = {};
+	                var id = "flashcontent";
+	                swfobject.showExpressInstall(att, par, id, cancelFunction);
+	        };
+	};
+	
+	swfobject.addDomLoadEvent(fn);
+	//Flash publishing end
+	
+	
+	
+	 //GA
+	 var _gaq = _gaq || [];
+	 _gaq.push(['_setAccount', 'UA-25399723-1']);
+	 _gaq.push(['_trackPageview']);
+	
+	 (function() {
+	   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	 })();
+	 //GA END
+</script>
+<style type="text/css">
+	/*hide from ie on mac\*/
+	html {
+		height: 100%;
+		overflow: hidden
+	}
+	#flashcontentdiv {
+		width: 100%;
+		height: 100%;
+	}
+	/* end hide */
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #FFFFFF;
+	}
+</style>
+
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>
+	 
+	
+		window.fbAsyncInit = function() {
+
+			FB.init({
+				appId 	: '108534862583650',
+				status	: true, 
+				cookie	: true, 
+				fbml	: true,
+				oauth : true
+			});
+			
+			//FB.XFBML.parse();
+		};
+
+		(function() {
+			var e = document.createElement('script'); e.async = true;
+			e.src = document.location.protocol +
+			'//connect.facebook.net/en_US/all.js';
+			document.getElementById('fb-root').appendChild(e); 
+		}());
+	</script>
+
+	<div id="flashcontent">
+		<p style="margin : 20px 20px 20px 20px"><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" border="0" alt="Get Adobe Flash player" /></a></p>
+	</div>
+</body>
+</html>

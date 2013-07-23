@@ -1,0 +1,15 @@
+<links>
+	<link name="twitterURL">
+		<href><![CDATA[http://twitter.com/home?status=Want to know how to affect your Super Balance? Find out with BT's Super Calculator: http://www.bt.com.au/exploded_content/super_calculator]]></href>
+	</link>
+	<link name="facebookURL">
+		<href><![CDATA[http://www.facebook.com/sharer.php?u=http://www.bt.com.au/exploded_content/super_calculator]]></href>
+	</link>
+	<link name="emailURL">
+		<href><![CDATA[mailto:?subject=BT Super Calculator&body=Want to know how to affect your Super Balance? Find out with BT's Super Calculator – http://www.bt.com.au/exploded_content/super_calculator]]></href>
+		<target>_self</target>
+	</link>
+	<link name="termsURL">
+		<href><![CDATA[http://www.bt.com.au]]></href>
+	</link>
+</links>

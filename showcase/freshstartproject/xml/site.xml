@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<site title="Fresh Start Project: %PAGE%">
+    <page id="index" src="index.swf" depth="top">
+        <page id="nav" src="nav.swf" depth="middle" title = "nav" menu="false">
+				<page id="supportwall" title="Support Wall" src="supportwall.swf" landing="true" menu="true" depth="bottom" >
+                              <asset id="grass" src="video/grass.flv" preload="false" type="netstream"/>
+                              <asset id="sky" src="video/sky.flv" preload="false" type="netstream" />
+                              <asset id="intro" src="video/intro.flv" preload = "false" type="netstream" />
+                </page>
+				<page id="theproject" title="The Project" src="theproject.swf" menu="true" depth="middle"> 
+	 				<page id="about" title="About the Project" src="abouttheproject.swf" menu="false" depth="bottom" flow="cross">
+						<asset id="sky" src="video/sky.flv" type="netstream" />
+						<asset id="sprout" src="video/sprout.flv" type="netstream" />
+					</page>
+					<page id="building" title="Building the House" src="buildingthehouse.swf" menu="false" depth="bottom" flow="cross">
+						<asset id="sky" src="video/sky.flv" type="netstream" />
+						<asset id="sunflower1" src="video/sunflower.flv" type="netstream" />
+						<asset id="sunflower2" src="video/sunflower.flv" type="netstream" />
+						<asset id="sunflower3" src="video/sunflower.flv" type="netstream" />
+						<asset id="sunflower4" src="video/sunflower.flv" type="netstream" />
+					</page>
+					<page id="habitat" title="Habitat for Humanity" src="habitatforhumanity.swf" menu="false" depth="bottom" flow="cross">
+						<asset id="sky" src="video/sky.flv" type="netstream" />
+					</page>
+				</page>
+       	 </page>
+	</page>
+</site>
