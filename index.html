@@ -17,28 +17,17 @@
 </head>
 <body>
 
-<!--
+
 <div class="preloader" id="preloader">
-    <div class="status-container">
-        <p class="status" id="status"></p>
-        <p class="ok" id="ok"></p>
-    </div>
-    <div class="bar-total" id="barTotal"></div>
-    <div class="bar-current" id="barCurrent"></div>
-    <p class="current-file" id="currentFile">current file</p>
-
-
-    <p class="percentage" id="percentage">65</p>
-</div>
--->
-<div class="preloader-container" id="preloaderContainer">
     <div id="counterSmallLeft" class="counter-small-left"></div>
-
     <div id="counterSmallRight" class="counter-small-right"></div>
     <div id="counterLarge" class="counter-large"></div>
+    <div class="counter-arrow"></div>
+    <div class="progress-bar" id="fileProgress"></div>
+    <div class="progress-top-mark"></div>
+    <p class="file-title" id="fileTitle"></p>
 </div>
 
-<!--<p id="preloader" class="preloader">0%</p>-->
 
 <div id="fb-root"></div>
 <div class="fblike">
@@ -52,24 +41,30 @@
         Detector.addGetWebGLMessage();
     }
     else {
-        //loadTheBadBoy();
+        buildCounters();
+        window.onresize = resize;
+        resize(null);
+        load();
     }
-    var step = 5;
-    var counterSmallLeft = document.getElementById('counterSmallLeft');
-    counterSmallLeft.innerHTML = create100ElList('small', 'counterInnerSmallLeft');
 
-    var counterSmallRight = document.getElementById('counterSmallRight');
-    counterSmallRight.innerHTML = create100ElList('small', 'counterInnerSmallRight');
-
-    var counterLarge = document.getElementById('counterLarge');
-    counterLarge.innerHTML = create100ElList('large', 'counterInnerLarge');
-
-    var counterInnerSmallLeft = document.getElementById('counterInnerSmallLeft');
-    var counterInnerSmallRight = document.getElementById('counterInnerSmallRight');
-    var counterInnerLarge = document.getElementById('counterInnerLarge');
+    var step = 5,
+        percTotal= 0,
+        queue,
+        preloader, counterInnerSmallLeft, counterInnerSmallRight, counterInnerLarge, fileTitle, fileProgress;
 
 
+    function buildCounters(){
+        document.getElementById('counterSmallLeft').innerHTML = create100ElList('small', 'counterInnerSmallLeft');
+        document.getElementById('counterSmallRight').innerHTML = create100ElList('small', 'counterInnerSmallRight');
+        document.getElementById('counterLarge').innerHTML = create100ElList('large', 'counterInnerLarge');
 
+        preloader = document.getElementById('preloader');
+        counterInnerSmallLeft = document.getElementById('counterInnerSmallLeft');
+        counterInnerSmallRight = document.getElementById('counterInnerSmallRight');
+        counterInnerLarge = document.getElementById('counterInnerLarge');
+        fileTitle = document.getElementById('fileTitle');
+        fileProgress = document.getElementById('fileProgress');
+    }
     function create100ElList(size, id){
         var str='<ul id="' + id + '" class="progress-list ' + size + '">';
         var num= '';
@@ -80,47 +75,17 @@
         str+='</ul>';
         return str;
     }
-
-    var progress=0;
-    var interval;
-    var percTotal=0;
-
-
-    function progressUpdate(){
-        progress+=1;
-        counterInnerSmallLeft.style.left = -progress + 150 + 'px';
-        counterInnerSmallRight.style.left = -progress - 100 + 'px';
-
-        if(percTotal != Math.round(progress/100)*100){
-            percTotal = Math.round(progress/100)*100;
-            counterInnerLarge.style.left = - Math.round(progress/100) *80 + 'px';
-        };
-
-
-        //counterInnerLarge.style.left = -progress + 'px';
-
-
-        if(progress==100*100/step) clearInterval(interval);
+    function resize(event){
+        var width = (window.innerWidth < 1100) ? 1100 : window.innerHeight;
+        var height = (window.innerHeight < 600) ? 600 : window.innerHeight;
+        preloader.style.left =  Math.round(width/2) + 'px';
+        preloader.style.top =  Math.round(height/2) + 'px';
     }
-    interval = setInterval(progressUpdate, 1);
 
-    var preloader, sta, statusStr, currentFile, ok, okStr, queue;
-    function loadTheBadBoy(){
-        preloader = document.getElementById('preloader');
-        sta = document.getElementById('status');
-        currentFile = document.getElementById('currentFile');
-        ok = document.getElementById('ok');
-        statusStr = "";
-        okStr = "";
-
-        preloader.style.display = 'block';
-        window.onresize = resize;
-        resize(null);
-
+    function load(){
         queue = new createjs.LoadQueue();
-        //queue.onComplete = onComplete;
-        //queue.onProgress = onProgress;
-        queue.onFileLoad = onFileLoad;
+        queue.onComplete = onComplete;
+        queue.onProgress = onProgress;
         queue.onFileProgress = onFileProgress;
         queue.loadManifest([
             {id: "raphael", src:"js/libs/raphael/raphael-min.js"},
@@ -160,28 +125,24 @@
             {id:"ignore", src:"img/chrome.gif"},
             {id: "require", src:"js/libs/require/require.js"}
         ]);
+    }
 
-        //console.log(queue)
+    function onProgress(event){
+        var progress =  Math.round(event.loaded * 100);
+        counterInnerSmallLeft.style.left = -progress*100/step + 100 + 'px';
+        counterInnerSmallRight.style.left = -progress*100/step - 70 + 'px';
+        if(percTotal != Math.round(progress/step)){
+            percTotal = Math.round(progress/step);
+            counterInnerLarge.style.left = - percTotal*68 + 'px';
+        };
     }
-    function resize(event){
-        //var height = (window.innerHeight < 600) ? 600 : window.innerHeight;
-        //preloader.style.top =  Math.round((height - parseInt(preloader.scrollHeight))/2) + 'px';
-    }
+
     function onFileProgress(event) {
-        var loadedPC =  Math.round(event.loaded * 100);
-        currentFile.innerHTML = event.item.src + loadedPC;
+        fileTitle.innerHTML = event.item.src;
+        fileProgress.innerHTML = 180 * event.loaded;
     }
 
-    function onFileLoad(event) {
-        statusStr += event.item.src + '<br/>';
-        sta.innerHTML = statusStr;
-
-        //okStr += 'ok<br/>';
-        //ok.innerHTML = okStr;
-    }
     function onComplete(event) {
-
-
         var so = event.target._scriptOrder;
         var results =  event.target._loadedResults;
         var id;
@@ -193,16 +154,14 @@
             }
         }
         window.onresize = null;
-        preloader.style.display = 'none';
-        queue.onComplete = null;
         queue.onProgress = null;
+        queue.onFileProgress = null;
+        queue.onComplete = null;
         queue.removeAll();
         queue.close();
         queue = null;
-    }
-    function onProgress(event) {
-        var loadedPC =  Math.round(event.loaded * 100);
-        preloader.innerHTML = loadedPC + "%";
+
+        document.removeChild(preloader);
     }
 </script>
 

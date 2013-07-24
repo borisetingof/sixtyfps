@@ -113,16 +113,16 @@ textarea {
     height: 600px;
 }
 
-.preloader-container{
-    top: 50%;
-    left: 50%;
+.preloader{
     position: absolute;
+    margin: -75px 0 0 -203px;
+    top:0;
+    left: 0;
 }
-
 
 ul.progress-list{
     font-family: 'Cuprum', Arial, serif;
-    -webkit-font-smoothing: antialiased;
+
     list-style: none;
     position: absolute;
 }
@@ -148,7 +148,7 @@ ul.progress-list.large {
 
 }
 ul.progress-list.large li{
-    width: 80px;
+    width: 68px;
     font-size: 50px;
 }
 
@@ -156,111 +156,59 @@ ul.progress-list.large li{
     height: 12px;
     overflow: hidden;
     position: absolute;
-    top: 39px;
+    top: 28px;
 }
 .counter-small-left{
     width: 120px;
-    left: 75px;
+    left: 0px;
 }
 .counter-small-right{
     width: 420px;
-    left: 302px;
+    left: 250px;
 }
 .counter-large{
-    width: 80px;
+    width: 68px;
     height: 70px;
     overflow: hidden;
     position: absolute;
     left: 200px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-p.preloader{
-    font-size: 14px;
-    display: none;
+.counter-arrow{
+    width: 5px;
+    height: 3px;
+    background: url(../img/preloaderArrow.png) no-repeat;
     position: absolute;
-    z-index: 999;
-    padding: 0;
-    margin: 0;
-    line-height: 0;
-    left: 38px;
+    top: 76px;
+    left: 200px;
 }
 
-.preloader{
-   width: 100%;
-   position: absolute;
-   z-index: 999;
-   bottom: 40px;
-}
-.preloader p.percentage{
-   padding: 5px 38px;
-   font-size: 34px;
+.progress-bar{
+    height: 30px;
+    width: 180px;
+    background: white;
+    position: absolute;
+    top: 102px;
+    left: 203px;
 }
 
-
-.preloader .status-container{
-    height: 400px;
-    overflow: hidden;
-    margin: 20px 114px;
-    position: relative;
-}
-
-.preloader p.status, p.ok{
-   font-size: 14px;
-   position: absolute;
-   bottom: 0;
-}
-
-.preloader p.ok{
-   left: 600px;
-    text-transform:uppercase
-}
-
-.preloader p.current-file{
-    margin-left: 114px;
-    margin-top: 5px;
-}
-
-
-.preloader .bar-total{
-  width: 0%;
-  height: 110px;
-  background: #ffffff;
-}
-
-.preloader .bar-current{
-    width: 60%;
-    height: 10px;
-
-    margin-left: 114px;
+.progress-top-mark{
+    height: 30px;
+    width: 10px;
     background: #ffffff;
+    position: absolute;
+    top: 102px;
+    left: 383px;
+}
+
+.file-title{
+    width: 300px;
+    text-align: right;
+    position: absolute;
+    font-size: 17px;
+    text-transform: uppercase;
+    top: 98px;
+    left: -107px;
 }
 
 .info {
