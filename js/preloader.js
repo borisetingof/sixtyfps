@@ -6,7 +6,10 @@ var step = 5,
     percTotal= 0,
     queue,
     prefix,
-    preloader, counterInnerSmallLeft, counterInnerSmallRight, counterInnerLarge, fileTitle, fileProgress;
+    preloader, counterInnerSmallLeft, counterInnerSmallRight, counterInnerLarge, fileTitle, fileProgress,
+    currentTitle='',
+    currentTitleStr='',
+    currentTitleIndex=0;
 
 window.onload = function(event){
     if (!Detector.webgl) {
@@ -17,9 +20,13 @@ window.onload = function(event){
         window.onresize = resize;
         resize(null);
         setCounters(0);
-        load();
-        preloader.style.display = "block";
+        setTimeout(showAndLoad, 1000);
     }
+}
+
+function showAndLoad(){
+    load();
+    preloader.style.opacity = 1;
 }
 
 function buildCounters(){
@@ -113,8 +120,15 @@ function onProgress(event){
 }
 
 function onFileProgress(event) {
-    fileTitle.innerHTML = event.item.title;
-    fileProgress.style.width = 180 * event.loaded + 'px';
+    if(currentTitle != event.item.title){
+        currentTitle = event.item.title;
+        currentTitleStr += '<br/>' + currentTitle;
+        fileTitle.innerHTML = currentTitleStr;
+        currentTitleIndex++;
+        fileTitle.style[prefix] = "translateY(" + (-currentTitleIndex*23) + "px)";
+    }
+
+    fileProgress.style.width = 280 * event.loaded + 'px';
 }
 
 function onComplete(event) {
