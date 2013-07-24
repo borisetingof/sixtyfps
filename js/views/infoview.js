@@ -354,7 +354,7 @@ define([
 
             var animationPull = [
                 {'id':this.el_be_p, 'string':'BORIS ETINGOF', time:1, tween:0, delay:0},
-                {'id':this.el_best_p, 'string':'BEST OF 2008—2012', time:1, tween:0, delay:0}
+                {'id':this.el_best_p, 'string':'BEST OF 2008—2013', time:1, tween:0, delay:0}
             ];
 
             this.runAnimation(animationPull);

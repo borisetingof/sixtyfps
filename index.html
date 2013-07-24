@@ -9,15 +9,13 @@
     <meta property="og:image" content="http://www.sixtyfps.com.au/img/facebookLikeImg.png"/>
     <meta property="og:site_name" content="Sixty FPS"/>
     <meta property="fb:admins" content="566535958"/>
-    <!--<title>Boris Etingof — Developer</title>-->
+    <title>Boris Etingof — Developer</title>
     <meta name="description" content="Portfolio.HTML5">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
-
 <div class="preloader" id="preloader">
     <div id="counterSmallLeft" class="counter-small-left"></div>
     <div id="counterSmallRight" class="counter-small-right"></div>
@@ -27,8 +25,6 @@
     <div class="progress-top-mark"></div>
     <p class="file-title" id="fileTitle"></p>
 </div>
-
-
 <div id="fb-root"></div>
 <div class="fblike">
     <div class="fb-like" data-href="http://www.sixtyfps.com.au/" data-send="false" data-layout="button_count"
@@ -36,134 +32,7 @@
 </div>
 <script src="js/libs/three/Detector.js"></script>
 <script src="http://code.createjs.com/preloadjs-0.3.1.min.js"></script>
-<script>
-    if (!Detector.webgl) {
-        Detector.addGetWebGLMessage();
-    }
-    else {
-        buildCounters();
-        window.onresize = resize;
-        resize(null);
-        load();
-    }
-
-    var step = 5,
-        percTotal= 0,
-        queue,
-        preloader, counterInnerSmallLeft, counterInnerSmallRight, counterInnerLarge, fileTitle, fileProgress;
-
-
-    function buildCounters(){
-        document.getElementById('counterSmallLeft').innerHTML = create100ElList('small', 'counterInnerSmallLeft');
-        document.getElementById('counterSmallRight').innerHTML = create100ElList('small', 'counterInnerSmallRight');
-        document.getElementById('counterLarge').innerHTML = create100ElList('large', 'counterInnerLarge');
-
-        preloader = document.getElementById('preloader');
-        counterInnerSmallLeft = document.getElementById('counterInnerSmallLeft');
-        counterInnerSmallRight = document.getElementById('counterInnerSmallRight');
-        counterInnerLarge = document.getElementById('counterInnerLarge');
-        fileTitle = document.getElementById('fileTitle');
-        fileProgress = document.getElementById('fileProgress');
-    }
-    function create100ElList(size, id){
-        var str='<ul id="' + id + '" class="progress-list ' + size + '">';
-        var num= '';
-        for(var i=0; i<101; i+=step){
-            num = (i<10) ? '0' + i : i;
-            str += '<li>' + num + '</li>';
-        }
-        str+='</ul>';
-        return str;
-    }
-    function resize(event){
-        var width = (window.innerWidth < 1100) ? 1100 : window.innerHeight;
-        var height = (window.innerHeight < 600) ? 600 : window.innerHeight;
-        preloader.style.left =  Math.round(width/2) + 'px';
-        preloader.style.top =  Math.round(height/2) + 'px';
-    }
-
-    function load(){
-        queue = new createjs.LoadQueue();
-        queue.onComplete = onComplete;
-        queue.onProgress = onProgress;
-        queue.onFileProgress = onFileProgress;
-        queue.loadManifest([
-            {id: "raphael", src:"js/libs/raphael/raphael-min.js"},
-            {id: "CuprumRegular_400", src:"js/libs/fonts/CuprumRegular_400.font.js"},
-            {id: "three", src:"js/libs/three/three.min.js"},
-            {id: "ConvolutionShader", src:"js/libs/three/shaders/ConvolutionShader.js"},
-            {id: "CopyShader", src:"js/libs/three/shaders/CopyShader.js"},
-            {id: "VignetteShader", src:"js/libs/three/shaders/VignetteShader.js"},
-            {id: "EffectComposer", src:"js/libs/three/postprocessing/EffectComposer.js"},
-            {id: "MaskPass", src:"js/libs/three/postprocessing/MaskPass.js"},
-            {id: "RenderPass", src:"js/libs/three/postprocessing/RenderPass.js"},
-            {id: "ShaderPass", src:"js/libs/three/postprocessing/ShaderPass.js"},
-            {id: "BloomPass", src:"js/libs/three/postprocessing/BloomPass.js"},
-            {id:"ignore", src:"js/main.js"},
-            {id:"ignore", src:"js/app.js"},
-            {id:"ignore", src:"js/libs/jquery/jquery-min.js"},
-            {id:"ignore", src:"js/libs/underscore/underscore-min.js"},
-            {id:"ignore", src:"js/views/markerview.js"},
-            {id:"ignore", src:"js/views/threejsview.js"},
-            {id:"ignore", src:"js/views/navitemview.js"},
-            {id:"ignore", src:"js/libs/backbone/backbone-optamd3-min.js"},
-            {id:"ignore", src:"js/views/infoview.js"},
-            {id:"ignore", src:"js/models/linesmodel.js"},
-            {id:"ignore", src:"js/models/navitemmodel.js"},
-            {id:"ignore", src:"js/models/cameramodel.js"},
-            {id:"ignore", src:"js/models/markermodel.js"},
-            {id:"ignore", src:"js/models/infomodel.js"},
-            {id:"ignore", src:"js/collections/markerscollection.js"},
-            {id:"ignore", src:"js/collections/navitemscollection.js"},
-            {id:"ignore", src:"js/router.js"},
-            {id:"ignore", src:"js/libs/utils/Stats.js"},
-            {id:"ignore", src:"js/libs/gsap/TweenLite.min.js"},
-            {id:"ignore", src:"js/libs/gsap/plugins/BezierPlugin.min.js"},
-            {id:"ignore", src:"img/circle.png"},
-            {id:"ignore", src:"img/blur.jpg"},
-            {id:"ignore", src:"img/dottedbg.png"},
-            {id:"ignore", src:"img/chrome.gif"},
-            {id: "require", src:"js/libs/require/require.js"}
-        ]);
-    }
-
-    function onProgress(event){
-        var progress =  Math.round(event.loaded * 100);
-        counterInnerSmallLeft.style.left = -progress*100/step + 100 + 'px';
-        counterInnerSmallRight.style.left = -progress*100/step - 70 + 'px';
-        if(percTotal != Math.round(progress/step)){
-            percTotal = Math.round(progress/step);
-            counterInnerLarge.style.left = - percTotal*68 + 'px';
-        };
-    }
-
-    function onFileProgress(event) {
-        fileTitle.innerHTML = event.item.src;
-        fileProgress.innerHTML = 180 * event.loaded;
-    }
-
-    function onComplete(event) {
-        var so = event.target._scriptOrder;
-        var results =  event.target._loadedResults;
-        var id;
-        results['require'].setAttribute("data-main", "js/main");
-        for(var i=0; i<so.length; i++){
-            id =  so[i]['id'];
-            if(id!='ignore'){
-                document.body.appendChild(results[id]);
-            }
-        }
-        window.onresize = null;
-        queue.onProgress = null;
-        queue.onFileProgress = null;
-        queue.onComplete = null;
-        queue.removeAll();
-        queue.close();
-        queue = null;
-
-        document.removeChild(preloader);
-    }
-</script>
+<script src="js/preloader.js"></script>
 
 <!--facebook like-->
 <script>(function (d, s, id) {

@@ -115,16 +115,21 @@ textarea {
 
 .preloader{
     position: absolute;
-    margin: -75px 0 0 -203px;
+    margin: -75px 0 0 -243px;
     top:0;
     left: 0;
+    display: none;
 }
 
 ul.progress-list{
     font-family: 'Cuprum', Arial, serif;
-
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
     list-style: none;
     position: absolute;
+    transition: transform 0.2s ease-in-out;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    -moz-transition: -moz-transform 0.2s ease-in-out;
 }
 ul.progress-list li{
     float: left;
@@ -133,7 +138,6 @@ ul.progress-list.small {
     width: 10100px;
     color: #828282;
     letter-spacing: 1px;
-
 }
 ul.progress-list.small li{
     width: 100px;
@@ -142,10 +146,6 @@ ul.progress-list.small li{
 ul.progress-list.large {
     width: 10100px;
     color: #ffffff;
-
-    transition: left 0.2s ease-in-out;
-    -webkit-transition: left 0.2s ease-in-out;
-
 }
 ul.progress-list.large li{
     width: 68px;
@@ -179,17 +179,19 @@ ul.progress-list.large li{
     height: 3px;
     background: url(../img/preloaderArrow.png) no-repeat;
     position: absolute;
-    top: 76px;
-    left: 200px;
+    top: 78px;
+    left: 220px;
 }
 
 .progress-bar{
     height: 30px;
-    width: 180px;
+    width: 0;
     background: white;
     position: absolute;
     top: 102px;
-    left: 203px;
+    left: 220px;
+    transition: width 0.2s ease-out;
+    -webkit-transition: width 0.2s ease-out;
 }
 
 .progress-top-mark{
@@ -198,7 +200,7 @@ ul.progress-list.large li{
     background: #ffffff;
     position: absolute;
     top: 102px;
-    left: 383px;
+    left: 400px;
 }
 
 .file-title{
@@ -208,7 +210,7 @@ ul.progress-list.large li{
     font-size: 17px;
     text-transform: uppercase;
     top: 98px;
-    left: -107px;
+    left: -90px;
 }
 
 .info {
@@ -222,6 +224,7 @@ h1, p, a {
     font-family: 'Cuprum', Arial, serif;
     color: white;
     -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
 }
 
 h1 {
@@ -396,7 +399,7 @@ p, ul, li {
 }
 
 .best {
-    width: 100px;
+    width: 110px;
     height: 17px;
     overflow: hidden;
     position: absolute;
