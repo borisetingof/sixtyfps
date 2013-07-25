@@ -54,6 +54,7 @@ function buildCounters(){
     }
 
 }
+
 function create100ElList(size, id){
     var str='<ul id="' + id + '" class="progress-list ' + size + '">';
     var num= '';
@@ -64,6 +65,7 @@ function create100ElList(size, id){
     str+='</ul>';
     return str;
 }
+
 function resize(event){
     var width = (window.innerWidth < 1100) ? 1100 : window.innerWidth;
     var height = (window.innerHeight < 600) ? 600 : window.innerHeight;
@@ -130,21 +132,23 @@ function onFileProgress(event) {
         fileTitle.style[prefix] = "translateY(" + (-currentTitleIndex*23) + "px)";
     }
 
-    fileProgress.style.width = 180 * event.loaded + 'px';
+    fileProgress.style.width = 163 * event.loaded + 'px';
 }
 
 function onComplete(event) {
     setCounters(100);
     setTimeout(run, 500);
 }
+
 function setCounters(progress){
-    counterInnerSmallLeft.style[prefix] = "translateX(" + (-progress*smallListItemWidth/step + smallListItemWidth) + "px)";
+    counterInnerSmallLeft.style[prefix] = "translateX(" + (-progress*smallListItemWidth/step + smallListItemWidth*2) + "px)";
     counterInnerSmallRight.style[prefix] = "translateX(" + (-progress*smallListItemWidth/step - smallListItemWidth) + "px)";
     if(percTotal != Math.round(progress/step)){
         percTotal = Math.round(progress/step);
         counterInnerLarge.style[prefix] = "translateX(" + (-percTotal*largeListItemWidth) + "px)";
     }
 }
+
 function run(){
     var so = queue._scriptOrder;
     var results =  queue._loadedResults;

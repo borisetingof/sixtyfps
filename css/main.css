@@ -158,19 +158,19 @@ ul.progress-list.large li{
     height: 12px;
     overflow: hidden;
     position: absolute;
-    top: 28px;
+    top: 20px;
 }
 .counter-small-left{
-    width: 120px;
-    left: 0px;
+    width: 100px;
+    left: 38px;
 }
 .counter-small-right{
-    width: 420px;
-    left: 330px;
+    width: 260px;
+    left: 300px;
 }
 .counter-large{
-    width: 68px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     overflow: hidden;
     position: absolute;
     left: 200px;
@@ -181,8 +181,8 @@ ul.progress-list.large li{
     height: 3px;
     background: url(../img/preloaderArrow.png) no-repeat;
     position: absolute;
-    top: 78px;
-    left: 220px;
+    top: -35px;
+    left: 217px;
 }
 
 .progress-bar{
@@ -191,7 +191,7 @@ ul.progress-list.large li{
     background: white;
     position: absolute;
     top: 80px;
-    left: 220px;
+    left: 217px;
     transition: width 0.2s ease-out;
     -webkit-transition: width 0.2s ease-out;
 }
@@ -202,7 +202,7 @@ ul.progress-list.large li{
     background: #5ea6ff;
     position: absolute;
     top: 80px;
-    left: 500px;
+    left: 380px;
 }
 
 .title-container{
@@ -217,7 +217,7 @@ ul.progress-list.large li{
 .file-title{
     width: 300px;
     text-align: right;
-    font-size: 17px;
+    font-size: 14px;
     line-height: 23px;
     text-transform: uppercase;
     position: absolute;
