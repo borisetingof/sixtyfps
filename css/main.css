@@ -142,7 +142,7 @@ ul.progress-list.small {
     letter-spacing: 1px;
 }
 ul.progress-list.small li{
-    width: 100px;
+    width: 80px;
     font-size: 10px;
 }
 ul.progress-list.large {
@@ -150,8 +150,8 @@ ul.progress-list.large {
     color: #ffffff;
 }
 ul.progress-list.large li{
-    width: 68px;
-    font-size: 50px;
+    width: 60px;
+    font-size: 40px;
 }
 
 .counter-small-left, .counter-small-right{

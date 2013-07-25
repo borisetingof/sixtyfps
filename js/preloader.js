@@ -9,7 +9,9 @@ var step = 5,
     preloader, counterInnerSmallLeft, counterInnerSmallRight, counterInnerLarge, fileTitle, fileProgress,
     currentTitle='',
     currentTitleStr='',
-    currentTitleIndex=0;
+    currentTitleIndex= 0,
+    smallListItemWidth = 80,
+    largeListItemWidth = 60;
 
 window.onload = function(event){
     if (!Detector.webgl) {
@@ -90,32 +92,32 @@ function load(){
         {title: "App JS", id:"ignore", src:"js/app.js"},
         {title: "jQuery JS", id:"ignore", src:"js/libs/jquery/jquery-min.js"},
         {title: "Underscore JS", id:"ignore", src:"js/libs/underscore/underscore-min.js"},
-        {title: "Markerview JS", id:"ignore", src:"js/views/markerview.js"},
-        {title: "Threejsview JS", id:"ignore", src:"js/views/threejsview.js"},
-        {title: "Navitemview JS", id:"ignore", src:"js/views/navitemview.js"},
+        {title: "Marker View JS", id:"ignore", src:"js/views/markerview.js"},
+        {title: "Threejs View JS", id:"ignore", src:"js/views/threejsview.js"},
+        {title: "Nav Item View JS", id:"ignore", src:"js/views/navitemview.js"},
         {title: "Backbone JS", id:"ignore", src:"js/libs/backbone/backbone-optamd3-min.js"},
-        {title: "Infoview JS", id:"ignore", src:"js/views/infoview.js"},
-        {title: "Linesmodel JS", id:"ignore", src:"js/models/linesmodel.js"},
-        {title: "Navitemmodel JS", id:"ignore", src:"js/models/navitemmodel.js"},
-        {title: "Cameramodel JS", id:"ignore", src:"js/models/cameramodel.js"},
-        {title: "Markermodel JS", id:"ignore", src:"js/models/markermodel.js"},
-        {title: "Infomodel JS", id:"ignore", src:"js/models/infomodel.js"},
-        {title: "Markerscollection JS", id:"ignore", src:"js/collections/markerscollection.js"},
-        {title: "Navitemscollection JS", id:"ignore", src:"js/collections/navitemscollection.js"},
+        {title: "Info View JS", id:"ignore", src:"js/views/infoview.js"},
+        {title: "Lines Model JS", id:"ignore", src:"js/models/linesmodel.js"},
+        {title: "Nav Item Model JS", id:"ignore", src:"js/models/navitemmodel.js"},
+        {title: "Camera Model JS", id:"ignore", src:"js/models/cameramodel.js"},
+        {title: "Marker Model JS", id:"ignore", src:"js/models/markermodel.js"},
+        {title: "Info Model JS", id:"ignore", src:"js/models/infomodel.js"},
+        {title: "Markers Collection JS", id:"ignore", src:"js/collections/markerscollection.js"},
+        {title: "Nav Items Collection JS", id:"ignore", src:"js/collections/navitemscollection.js"},
         {title: "Router JS", id:"ignore", src:"js/router.js"},
         {title: "Stats JS", id:"ignore", src:"js/libs/utils/Stats.js"},
         {title: "TweenLite JS", id:"ignore", src:"js/libs/gsap/TweenLite.min.js"},
-        {title: "BezierPlugin JS", id:"ignore", src:"js/libs/gsap/plugins/BezierPlugin.min.js"},
+        {title: "Bezier Plugin JS", id:"ignore", src:"js/libs/gsap/plugins/BezierPlugin.min.js"},
         {title: "Circle PNG", id:"ignore", src:"img/circle.png"},
         {title: "Blur PNG", id:"ignore", src:"img/blur.jpg"},
-        {title: "Dottedbg PNG", id:"ignore", src:"img/dottedbg.png"},
+        {title: "Dotted BG PNG", id:"ignore", src:"img/dottedbg.png"},
         {title: "Chrome GIF", id:"ignore", src:"img/chrome.gif"},
         {title: "Require JS", id:"require", src:"js/libs/require/require.js"}
     ]);
 }
 
 function onProgress(event){
-    var progress =  Math.round(event.loaded * 100);
+    var progress =  event.loaded * 100;
     setCounters(progress);
 }
 
@@ -128,7 +130,7 @@ function onFileProgress(event) {
         fileTitle.style[prefix] = "translateY(" + (-currentTitleIndex*23) + "px)";
     }
 
-    fileProgress.style.width = 280 * event.loaded + 'px';
+    fileProgress.style.width = 180 * event.loaded + 'px';
 }
 
 function onComplete(event) {
@@ -136,11 +138,11 @@ function onComplete(event) {
     setTimeout(run, 500);
 }
 function setCounters(progress){
-    counterInnerSmallLeft.style[prefix] = "translateX(" + (-progress*100/step + 100) + "px)";
-    counterInnerSmallRight.style[prefix] = "translateX(" + (-progress*100/step - 70) + "px)";
+    counterInnerSmallLeft.style[prefix] = "translateX(" + (-progress*smallListItemWidth/step + smallListItemWidth) + "px)";
+    counterInnerSmallRight.style[prefix] = "translateX(" + (-progress*smallListItemWidth/step - smallListItemWidth) + "px)";
     if(percTotal != Math.round(progress/step)){
         percTotal = Math.round(progress/step);
-        counterInnerLarge.style[prefix] = "translateX(" + (-percTotal*68) + "px)";
+        counterInnerLarge.style[prefix] = "translateX(" + (-percTotal*largeListItemWidth) + "px)";
     }
 }
 function run(){
