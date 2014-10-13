@@ -535,6 +535,16 @@ p, ul, li {
     background: #000000 !important;
 }
 
+.twitter-share-button{
+    position: absolute;
+    z-index: 999;
+    top:44px;
+    /*left:-999px;*/
+}
+#widget{
+    background: #000000;
+}
+
 .chromeLabel{
     display: none;
     position: absolute;

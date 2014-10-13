@@ -278,6 +278,7 @@ define([
             this.el_desc_measurer = $(".desc_measurer");
             this.el_chrome = $(".chromeLabel");
             this.el_fblike = $(".fblike");
+            this.el_twshare = $(".twitter-share-button");
 
 
             if (navigator.userAgent.indexOf("Firefox") != -1) {
@@ -360,6 +361,7 @@ define([
             this.runAnimation(animationPull);
             this.el_chrome.fadeIn(400);
             this.el_fblike.css({left:37 + 'px'});
+            this.el_twshare.css({left:135 + 'px'});
         },
         introClick:function () {
             this.el_introClicker.unbind();
